@@ -1,75 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Akses Data</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    .error {
-      color: red;
-      font-size: 14px;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akses Data</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #4facfe;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="box">
-  <h3>Akses Data</h3>
-  <p>Masukkan password untuk membuka</p>
-  
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="cekPassword()">Masuk</button>
-  
-  <p class="error" id="error">Password salah!</p>
+<div class="container">
+    <h2>🔒 Akses Data</h2>
+    <p>Masukkan password untuk melanjutkan</p>
+
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="cekPassword()">Masuk</button>
+
+    <div class="error" id="error"></div>
+    <div class="loading" id="loading">Memproses...</div>
 </div>
 
 <script>
-  function cekPassword() {
-    var input = document.getElementById("password").value;
-    var passwordBenar = "12345"; // GANTI PASSWORD DI SINI
-    var linkTujuan = "https://drive.google.com/drive/folders/1ur3kcsI0hnT7SXE42r34cdRCwNOWexAr?usp=sharing"; // GANTI LINK DI SINI
+    function cekPassword() {
+        const pass = document.getElementById("password").value;
+        const error = document.getElementById("error");
+        const loading = document.getElementById("loading");
 
-    if (input === passwordBenar) {
-      window.location.href = linkTujuan;
-    } else {
-      document.getElementById("error").style.display = "block";
+        error.innerText = "";
+        loading.style.display = "block";
+
+        setTimeout(() => {
+            if (pass === "12345") { // GANTI PASSWORD DI SINI
+                window.location.href = "https://docs.google.com/spreadsheets/d/XXXXX"; // GANTI LINK
+            } else {
+                loading.style.display = "none";
+                error.innerText = "Password salah!";
+            }
+        }, 1000);
     }
-  }
 </script>
 
 </body>
