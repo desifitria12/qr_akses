@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Akses Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>Akses Data</h3>
+  <p>Masukkan password untuk membuka</p>
+  
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="cekPassword()">Masuk</button>
+  
+  <p class="error" id="error">Password salah!</p>
+</div>
+
+<script>
+  function cekPassword() {
+    var input = document.getElementById("password").value;
+    var passwordBenar = "12345"; // GANTI PASSWORD DI SINI
+    var linkTujuan = "LINK_GOOGLE_SHEETS_KAMU"; // GANTI LINK DI SINI
+
+    if (input === passwordBenar) {
+      window.location.href = linkTujuan;
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
